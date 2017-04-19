@@ -1,0 +1,20 @@
+version: '3'
+services:
+  django:
+    build:
+      context: ./
+      dockerfile: Dockerfile-django
+    ports:
+      - 3939:3939
+    volumes:
+      - ./:/mnt
+    working_dir: /mnt
+    env_file: .env
+    tty: true
+
+  postgres:
+    build:
+      context: ./
+      dockerfile: Dockerfile-postgres
+    env_file: .env
+
