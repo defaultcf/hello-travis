@@ -1,0 +1,25 @@
+language: python
+python:
+    - "3.2"
+    - "3.3"
+    - "3.4"
+    - "3.5"
+    - "3.6"
+
+services:
+    - postgresql
+
+env:
+    - POSTGRES_DB=travis_ci_test
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=
+    - POSTGRES_HOST=localhost
+
+before_script:
+    - pip install -r requirements.txt
+    - psql -c 'create database travis_ci_test;' -U postgres
+
+script:
+    - python manage.py migrate
+    - python manage.py runserver 0.0.0.0:3939
+    - curl http://localhost:3939
