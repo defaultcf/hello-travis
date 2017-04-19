@@ -11,9 +11,9 @@ services:
 
 env:
     - POSTGRES_DB=travis_ci_test
-    - POSTGRES_USER=postgres
-    - POSTGRES_PASSWORD=
-    - POSTGRES_HOST=localhost
+      POSTGRES_USER=postgres
+      POSTGRES_PASSWORD=
+      POSTGRES_HOST=localhost
 
 before_script:
     - pip install -r requirements.txt
