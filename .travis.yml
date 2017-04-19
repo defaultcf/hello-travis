@@ -1,7 +1,5 @@
 language: python
 python:
-    - "3.2"
-    - "3.3"
     - "3.4"
     - "3.5"
     - "3.6"
@@ -21,5 +19,6 @@ before_script:
 
 script:
     - python manage.py migrate
-    - python manage.py runserver 0.0.0.0:3939
+    - python manage.py runserver 0.0.0.0:3939 &
+    - sleep 5
     - curl http://localhost:3939
