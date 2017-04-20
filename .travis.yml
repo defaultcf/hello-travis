@@ -7,12 +7,6 @@ python:
 services:
     - postgresql
 
-env:
-    - POSTGRES_DB=travis_ci_test
-      POSTGRES_USER=postgres
-      POSTGRES_PASSWORD=''
-      POSTGRES_HOST=localhost
-
 before_script:
     - pip install -r requirements.txt
     - psql -c "create database ${POSTGRES_DB};" -U ${POSTGRES_USER}
@@ -21,4 +15,4 @@ script:
     - python manage.py migrate
     - python manage.py runserver 0.0.0.0:3939 &
     - sleep 5
-    - curl http://localhost:3939
+    - curl http://localhost:3939 >/dev/null
